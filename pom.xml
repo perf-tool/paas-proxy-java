@@ -38,6 +38,7 @@
         <!-- dependency -->
         <bookkeeper.version>4.15.1</bookkeeper.version>
         <lombok.version>1.18.24</lombok.version>
+        <zookeeper.version>3.8.0</zookeeper.version>
         <!-- plugin -->
         <checkstyle-plugin.version>3.2.0</checkstyle-plugin.version>
         <puppycrawl.version>10.3.3</puppycrawl.version>
@@ -84,7 +85,7 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.8.0</version>
+            <version>${zookeeper.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>logback-classic</artifactId>
