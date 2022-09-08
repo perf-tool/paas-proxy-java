@@ -22,6 +22,7 @@ package com.github.perftool.paas.proxy.controller;
 import com.github.perftool.paas.proxy.module.CreateNodeResp;
 import com.github.perftool.paas.proxy.module.CreateNodeReq;
 import com.github.perftool.paas.proxy.module.DeleteNodeReq;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.ZooDefs;
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.nio.charset.StandardCharsets;
 
+@Slf4j
 @RestController
 @RequestMapping("/v1/zookeeper")
 public class ZookeeperController {
@@ -41,15 +43,13 @@ public class ZookeeperController {
     public ResponseEntity<CreateNodeResp> createLedger(@RequestBody CreateNodeReq req) throws Exception {
         try (
                 ZooKeeper zk = new ZooKeeper(String.format("%s:%d", req.getHost(), req.getPort()), 3000,
-                        watchedEvent -> System.out.println("zk process : " + watchedEvent))
+                        watchedEvent -> log.info("zk process : {}", watchedEvent))
         ) {
             String path = zk.create(req.getPath(), req.getData().getBytes(StandardCharsets.UTF_8)
                     , ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             CreateNodeResp resp = new CreateNodeResp();
             resp.setPath(path);
             return new ResponseEntity<>(resp, HttpStatus.OK);
-        } catch (Exception e) {
-            throw e;
         }
     }
 
@@ -57,12 +57,10 @@ public class ZookeeperController {
     public ResponseEntity<Void> deleteLedger(@RequestBody DeleteNodeReq req) throws Exception {
         try (
                 ZooKeeper zk = new ZooKeeper(String.format("%s:%d", req.getHost(), req.getPort()), 3000,
-                        watchedEvent -> System.out.println("zk process : " + watchedEvent));
+                        watchedEvent -> log.info("zk process : {}", watchedEvent));
         ) {
             zk.delete(req.getPath(), req.getVersion());
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            throw e;
         }
     }
 }
