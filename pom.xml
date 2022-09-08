@@ -38,6 +38,7 @@
         <!-- dependency -->
         <bookkeeper.version>4.15.1</bookkeeper.version>
         <lombok.version>1.18.24</lombok.version>
+        <zookeeper.version>3.8.0</zookeeper.version>
         <!-- plugin -->
         <checkstyle-plugin.version>3.2.0</checkstyle-plugin.version>
         <puppycrawl.version>10.3.3</puppycrawl.version>
@@ -80,6 +81,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
