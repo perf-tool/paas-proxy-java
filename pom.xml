@@ -36,7 +36,7 @@
     <properties>
         <java.version>17</java.version>
         <!-- dependency -->
-        <bookkeeper.version>4.15.3</bookkeeper.version>
+        <bookkeeper.version>4.16.0</bookkeeper.version>
         <lombok.version>1.18.26</lombok.version>
         <zookeeper.version>3.8.1</zookeeper.version>
         <!-- plugin -->
