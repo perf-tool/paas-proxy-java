@@ -38,7 +38,7 @@
         <!-- dependency -->
         <bookkeeper.version>4.16.2</bookkeeper.version>
         <lombok.version>1.18.28</lombok.version>
-        <zookeeper.version>3.8.2</zookeeper.version>
+        <zookeeper.version>3.9.0</zookeeper.version>
         <!-- plugin -->
         <checkstyle-plugin.version>3.3.0</checkstyle-plugin.version>
         <puppycrawl.version>10.12.1</puppycrawl.version>
