@@ -41,7 +41,7 @@
         <zookeeper.version>3.9.0</zookeeper.version>
         <!-- plugin -->
         <checkstyle-plugin.version>3.3.0</checkstyle-plugin.version>
-        <puppycrawl.version>10.12.2</puppycrawl.version>
+        <puppycrawl.version>10.12.5</puppycrawl.version>
         <spotbugs-maven-plugin.version>4.7.3.5</spotbugs-maven-plugin.version>
     </properties>
     <dependencies>
